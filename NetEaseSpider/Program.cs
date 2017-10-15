@@ -11,8 +11,8 @@ namespace NetEaseSpider
         {
             var spider = new Spider();
 
-            var ids = File.ReadAllLines("..\\TmpData\\songerlist.txt", Encoding.UTF8).Select(s => int.Parse(s.Split('\t').First().Trim().Split('=').Last())).ToHashSet();
-            var doneIds = File.ReadAllLines("..\\TmpData\\info.txt", Encoding.UTF8);
+            var ids = File.ReadAllLines("../TmpData/songerlist.txt", Encoding.UTF8).Select(s => int.Parse(s.Split('\t').First().Trim().Split('=').Last())).ToHashSet();
+            var doneIds = File.ReadAllLines("../TmpData/info.txt", Encoding.UTF8);
             foreach (var line in doneIds)
             {
                 var parts = line.Split('\t');
@@ -26,8 +26,8 @@ namespace NetEaseSpider
 
             Console.WriteLine("Loading {0} songerid", ids.Count);
             spider.SetLogger(
-                "..\\TmpData\\log.txt",
-                "..\\TmpData\\info.txt");
+                "../TmpData/log.txt",
+                "../TmpData/info.txt");
             spider.SongerId2AlbumsId(ids.ToArray());
 
             spider.Close();
